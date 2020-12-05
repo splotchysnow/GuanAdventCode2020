@@ -7,10 +7,15 @@ with open("Day1/file.txt") as f:
 
 #Two For Loops to find all value that add up to be 2020;
 
+
+I = -999
+
 for i in data:
     for j in data:
-        if (i + j == 2020):
-            print(i * j)
+        if (int(i) + int(j) == 2020):
+            print(int(i) * int(j))
+            I = i
             break
-        else:
-            print("I is {i}, J is {j}")
+    if (int(i) == int(I)):
+        break
+
