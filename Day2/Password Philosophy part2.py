@@ -36,29 +36,42 @@ def main():
             If so GOOD. If not, Invalid
         '''
 
-        jCounter = 0 #reset counter
-        jList = [] #empty the list
-        for j in i:
-            if j == letter: #if the J letter matches the letter then get the position
-                jList.append(jCounter) #Store the position into the list
-            jCounter += 1 #Counter go up by 1
+        # jCounter = 0 #reset counter
+        # jList = [] #empty the list
+        # for j in i:
+        #     if j == letter: #if the J letter matches the letter then get the position
+        #         jList.append(jCounter) #Store the position into the list
+        #     jCounter += 1 #Counter go up by 1
         
-        #here is where I check if the position excist in the jList:
-        for z in jList:
-            if (z == firstValue + 1  or z == secondValue +1):
-                sentenceCounter += 1
+        # #here is where I check if the position excist in the jList:
+        # for z in jList:
+        #     if (z == firstValue + 1  or z == secondValue +1):
+        #         sentenceCounter += 1
         
 
-                #DEBUG Can Restrict the amount of looping:        
-        iCounter = iCounter + 1 #counting I
-        # print(iCounter)
+        #         #DEBUG Can Restrict the amount of looping:        
+        # iCounter = iCounter + 1 #counting I
+        # # print(iCounter)
 
-        if iCounter == 5:
-            break
-                #DEBUG:
-        print(jList)
+        # if iCounter == 5:
+        #     break
+        #         #DEBUG:
+        # print(jList)
 
+        check = False #Reset Check to false
+        string1 = i[firstValue] # get the first string position
+        string2 = i[secondValue] # get the second string posiiton
+
+        if (string1 == letter): #If else statement for counting
+            check = True
+        elif (string2 == letter):
+            check = True
+        else:
+            check = False
         
+        if check: #if true, count + 1
+            sentenceCounter += 1
+
     print(sentenceCounter)
 
 
