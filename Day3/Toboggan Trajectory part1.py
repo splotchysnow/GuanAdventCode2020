@@ -42,8 +42,8 @@ def main():
 
         if (linesInArray[y][x]) == "#":
             treeCounter += 1
-            print("Horizontal = ", x + 1 , "and Verticle = " , y + 1)
-            print("The Symbole is: ", linesInArray[y][x])   
+            # print("Horizontal = ", x + 1 , "and Verticle = " , y + 1)
+            # print("The Symbole is: ", linesInArray[y][x])   
         
         #Dubugging Purposes
         # print("Horizontal = ", x , "and Verticle = " , y)

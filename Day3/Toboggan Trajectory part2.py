@@ -16,8 +16,7 @@ def lengthPerLine(data):
     return len(data[0]) # will return the length of the first line in data
 
 
-def main():
-
+def treeCount(slopeX, slopeY):
     treeCounter = 0 #Count the amount of trees being hit.
 
     data = openFile() #I open the file and "data" represent the file.
@@ -42,31 +41,41 @@ def main():
 
         if (linesInArray[y][x]) == "#":
             treeCounter += 1
-            print("Horizontal = ", x + 1 , "and Verticle = " , y + 1)
-            print("The Symbole is: ", linesInArray[y][x])   
-        
+               
         #Dubugging Purposes
         # print("Horizontal = ", x , "and Verticle = " , y)
         # print("The Symbole is: ", linesInArray[y][x])
         
         
         # Restrict the X's Boundaries.  If x is about to be > length then restrict it back to 0 # Move x to the right by 3
-        if ((x + 3) >= (length - 1)):
-            remainder = (x + 3) - (length - 1)
+        if ((x + slopeX) >= (length - 1)):
+            remainder = (x + slopeX) - (length - 1)
             x = 0 #reset x back to 0
             x += (remainder)
         else:
-            x += 3
+            x += slopeX
         
 
 
         #move y coordinate
-        y += 1 #move down by 1 line
+        y += slopeY #move down by 1 line
         
         #exit condition
-        if (y == lineLength):
+        if (y >= lineLength):
             break
-    print(treeCounter)
+    return treeCounter
+
+
+def main():
+    answer1 = treeCount(1,1)     # Right 1, down 1.
+    answer2 = treeCount(3,1)    # Right 3, down 1. (This is the slope you already checked.)
+    answer3 = treeCount(5,1)    # Right 5, down 1.
+    answer4 = treeCount(7,1)    # Right 7, down 1.
+    answer5 = treeCount(1,2)    # Right 1, down 2.
+
+    print("ANSWER:", answer1 * answer2 * answer3 * answer4 * answer5)
+
+
     
 
 if __name__ == "__main__":
