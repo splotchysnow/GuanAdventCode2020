@@ -54,7 +54,7 @@ def main():
         if ((x + 3) >= (length - 1)):
             remainder = (x + 3) - (length - 1)
             x = 0 #reset x back to 0
-            x += (remainder - 1)
+            x += (remainder)
         else:
             x += 3
         
