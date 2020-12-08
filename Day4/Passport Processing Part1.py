@@ -14,10 +14,9 @@ def countPeople():
     return count
 
 
-
 def main():
     data = openFile()
-    print(data)
+    print(countPeople())
     
 
 if __name__ == "__main__":
