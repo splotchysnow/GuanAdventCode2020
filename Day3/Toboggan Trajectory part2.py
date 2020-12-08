@@ -15,22 +15,15 @@ def storeAsArray(data):
 def lengthPerLine(data):
     return len(data[0]) # will return the length of the first line in data
 
-
-def treeCount(slopeX, slopeY):
+def slopeTreeCount( slopeX, slopeY, data):
     treeCounter = 0 #Count the amount of trees being hit.
-
-    data = openFile() #I open the file and "data" represent the file.
-    
     linesInArray = []
     linesInArray = storeAsArray(data) #store each line in a single array
-
     length = lengthPerLine(data) #length per each line:
     lineLength = len(linesInArray) 
-
     # print(length)
     #print(linesInArray)
     #print(lineLength)
-
 
     #initiating the coordinate
     x = 0
@@ -41,7 +34,9 @@ def treeCount(slopeX, slopeY):
 
         if (linesInArray[y][x]) == "#":
             treeCounter += 1
-               
+            # print("Horizontal = ", x + 1 , "and Verticle = " , y + 1)
+            # print("The Symbole is: ", linesInArray[y][x])   
+        
         #Dubugging Purposes
         # print("Horizontal = ", x , "and Verticle = " , y)
         # print("The Symbole is: ", linesInArray[y][x])
@@ -66,16 +61,22 @@ def treeCount(slopeX, slopeY):
     return treeCounter
 
 
+
 def main():
-    answer1 = treeCount(1,1)     # Right 1, down 1.
-    answer2 = treeCount(3,1)    # Right 3, down 1. (This is the slope you already checked.)
-    answer3 = treeCount(5,1)    # Right 5, down 1.
-    answer4 = treeCount(7,1)    # Right 7, down 1.
-    answer5 = treeCount(1,2)    # Right 1, down 2.
-
-    print("ANSWER:", answer1 * answer2 * answer3 * answer4 * answer5)
 
 
+    data = openFile() #I open the file and "data" represent the file.
+    ans1=slopeTreeCount(1,1,data) # Right 1, down 1.
+    ans2=slopeTreeCount(3,1,data) # Right 3, down 1. (This is the slope you already checked.)
+    ans3=slopeTreeCount(5,1,data) # Right 5, down 1.
+    ans4=slopeTreeCount(7,1,data) # Right 7, down 1.
+    ans5=slopeTreeCount(1,2,data) # Right 1, down 2.
+    print(ans1*ans2*ans3*ans4*ans5)
+
+  
+    
+    
+    
     
 
 if __name__ == "__main__":
