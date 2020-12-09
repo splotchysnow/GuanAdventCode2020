@@ -108,7 +108,7 @@ def main():
 
     # print(len(invalidList))
 
-    # print(validCount)
+    print(validCount)
 
 
     #The answer is between 162 to 290

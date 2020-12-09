@@ -34,7 +34,7 @@ class Passport:
     
     def checkInvalidPassport(self):
         F = ""
-        if ((self.ecl != F) and (self.byr != F) and (self.iyr != F) and (self.pid != F) and (self.cid != F) and (self.hgt != F) and (self.eyr != F) and (self.hcl != F)):
+        if ((self.ecl != F) and (self.byr != F) and (self.iyr != F) and (self.pid != F) and (self.hgt != F) and (self.eyr != F) and (self.hcl != F)):
             return True
         else:
             return False
