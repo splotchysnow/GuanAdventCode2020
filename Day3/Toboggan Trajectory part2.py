@@ -63,8 +63,6 @@ def slopeTreeCount( slopeX, slopeY, data):
 
 
 def main():
-
-
     data = openFile() #I open the file and "data" represent the file.
     ans1=slopeTreeCount(1,1,data) # Right 1, down 1.
     ans2=slopeTreeCount(3,1,data) # Right 3, down 1. (This is the slope you already checked.)
