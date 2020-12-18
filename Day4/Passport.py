@@ -1,5 +1,10 @@
 # A class for Passport that contains different attributes.
 
+def cidChecker():
+    # This is just useless...
+    return True
+
+
 class Passport:
 
     def __init__(self, ecl, byr, iyr, pid, cid, hgt, eyr, hcl):
@@ -42,7 +47,7 @@ class Passport:
 
     def checkInvalidPassport(self):
         if (
-                self.existenceChecker() and self.byrChecker() and self.cidChecker() and self.eclChecker() and
+                self.existenceChecker() and self.byrChecker() and cidChecker() and self.eclChecker() and
                 self.eyrChecker() and self.hclChecker()
                 and self.hgtChecker() and self.iyrChecker() and self.pidChecker()):
             return True
@@ -56,7 +61,7 @@ class Passport:
             error.append("Existence False")
         if not self.byrChecker():
             error.append("Byr False")
-        if not self.cidChecker():
+        if not cidChecker():
             error.append("cid false")
         if not self.eclChecker():
             error.append("Ecl false")
@@ -80,7 +85,7 @@ class Passport:
         else:
             return False
 
-    # TODO: Not so sure that maybe length is 3 or 4... I think 4 is fine for now...
+    # Not so sure that maybe length is 3 or 4... I think 4 is fine for now...
     def byrChecker(self):
         byr = int(self.byr)
         if len(self.byr) == 4 and (1920 <= byr <= 2002):
@@ -105,21 +110,48 @@ class Passport:
     # Get the letter for if the thing is cm or inch.
     # I Think this function is now working properly.
     def hgtChecker(self):
-        hgt = int(self.hgt[:-2])
-        measurement = self.hgt[-2:len(self.hgt)] # Either in or cm
-        # print(hgt)
-        if measurement == "cm" and (150 <= hgt <= 193):
-            return True
-        elif measurement == "in" and (59 <= hgt <= 76):
+        try:
+            hgt = int(self.hgt[:-2])
+            measurement = self.hgt[-2:len(self.hgt)]  # Either in or cm
+            # print(hgt)
+            if measurement == "cm" and (150 <= hgt <= 193):
+                return True
+            elif measurement == "in" and (59 <= hgt <= 76):
+                return True
+            else:
+                return False
+        except ValueError:
+            return False
+
+    # Either get the character value and just compare the value, or make an array with 0-9 and a-f and check it that way.
+    # 0-9 is 48 -> 57 and  a-f is 97 -> 102
+    # Something is wrong with this...
+    def hclChecker(self):
+
+        hcl = self.hcl
+        if len(hcl) == 0:
+            return False
+
+        if hcl[0] == "#":
+            sign = True
+        else:
+            sign = False
+
+        check = True
+        hcl = self.hcl[1:]
+        for i in hcl:
+            char_int = ord(i)
+            if 48 <= char_int <= 57:
+                pass
+            elif 97 <= char_int <= 102:
+                pass
+            else:
+                check = False
+
+        if check and sign:
             return True
         else:
             return False
-
-    # TODO: Either get the character value and just compare the value, or make an arrya with 0-9 and a-f and check it that way.
-    def hclChecker(self):
-        # gotta find those values...
-
-        return True
 
     # either amb, blu, brn, gry, grn, hzl, oth
     def eclChecker(self):
@@ -130,11 +162,17 @@ class Passport:
                 return True
         return False
 
-    # TODO: a nine digit number including leading zeros.
+    # a nine digit number including leading zeros.
     # Maybe do a catch int error? LOL THAT IS A NICE IDEA ACTUALLY.
+    # Not really sure if it reports the integer value errors... but yeah we can try this
     def pidChecker(self):
-        return True
+        pid = self.pid
+        try:
+            int_pid = int(pid)
+            if len(pid) == 9:
+                return True
+            else:
+                return False
+        except ValueError:
+            return False
 
-    # Ignored, just doesn't matter at all... don't even do it;
-    def cidChecker(self):
-        return True

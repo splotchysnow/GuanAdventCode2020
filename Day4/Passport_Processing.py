@@ -1,5 +1,7 @@
 # import re  # getting regular Expression
 from Passport import Passport
+
+
 # from typing import List, Sized
 
 
@@ -106,10 +108,11 @@ def main():
         if not i.checkInvalidPassport():
             invalidList.append(lineCounter)
         lineCounter += 1  # debugging purpose
+
+    for i in passPortLine:
+        print(i.hclChecker())
     # The Result!
     print("The Count is:", validCount)
-    print(passPortLine[0].hgtChecker())
-    print(passPortLine[0].getHgt())
 
 
 def debug():
@@ -141,6 +144,11 @@ def debug():
     # print(eyrList[0])
     # print(hclList[0])
     # print(data)
+
+    # These use to test the independent tests.
+    # print(passPortLine[0].hgtChecker())
+    # print(passPortLine[0].getHgt())
+
     pass
 
 
